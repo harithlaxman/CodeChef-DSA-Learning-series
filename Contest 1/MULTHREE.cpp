@@ -15,34 +15,40 @@ void solve(){
     ll k,x,y,n,sum=0;
     cin>>k>>x>>y;
     sum=x+y;
-    if(x+y==10)
-        cout<<"NO"<<endl;
-    else{
-        int temp=(x+y)%10;
-        if(temp%2==0){
-            n=k-2;
-            ll q=n/4 , r=n%4;
-            sum+=(q*20);
-            rep(i,0,r){
-                sum+=temp;
-                temp=(temp*2)%10;
-            }
-        }
-        else{
-            n = k-3;
-            ll q=n/4 , r=n%4;
-            sum+=((q*20)+temp);
-            temp=(temp*2)%10;
-            rep(i,0,r){
-                sum+=temp;
-                temp=(temp*2)%10;
-            }
-        }
+    ll temp=(sum%10);
+    if(k==2){
+        if(sum%3==0)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
-    if(sum%3==0)
-        cout<<"YES"<<endl;
-    else
-        cout<<"NO"<<endl;
+    else if(k==3){
+        sum= sum+temp;
+        if(sum%3==0)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+    }
+    else{
+        k-=3;
+        ll q=k/4 , r=k%4;
+        
+        ll tot = 0;
+        ll t1=(temp*2)%10;
+        rep(i,0,4)
+        {
+            tot+=t1;
+            t1=(t1*2)%10;
+        }
+        
+        sum+=((q*tot)+temp);
+        temp=(temp*2)%10;
+        rep(i,0,r){
+            sum+=temp;
+            temp=(temp*2)%10;
+            }
+        //cout<<sum<<'\n';
+        if(sum%3==0)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
 }
 
 int main(){
