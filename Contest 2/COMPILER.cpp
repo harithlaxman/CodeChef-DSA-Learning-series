@@ -12,14 +12,22 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);
 
 void solve(){
-    int x,n,s,p,v,m=0;
-    cin>>n;
-    while(n--){
-        cin>>s>>p>>v;
-        x = (p/(s+1))*v;
-        if(x>m)m=x;
+    string s;
+    ll save=0;
+    stack <int> q;
+    cin>>s;
+    rep(i,0,s.length()){
+        if(s[i]=='<'){q.push(1);}
+        else{
+            if(q.empty())break;
+            else{q.pop();}
+        }
+        if(q.empty()&&i!=0)save=i+1;
     }
-    cout<<m<<endl;
+    if(save)
+    cout<<save<<endl;
+    else
+    cout<<0<<endl;
 }
 
 int main(){
