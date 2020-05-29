@@ -14,6 +14,7 @@ using namespace std;
 void solve(){
     ll k,x,y,n,sum=0;
     cin>>k>>x>>y;
+    sum=x+y;
     if(x+y==10)
         cout<<"NO"<<endl;
     else{
